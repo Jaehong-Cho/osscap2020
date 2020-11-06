@@ -184,7 +184,7 @@ while True:
                     die = False
                     game_set()
     
-    udino()
+    u_dino()
     d_background()
     d_cloud()
     d_obstacle()
