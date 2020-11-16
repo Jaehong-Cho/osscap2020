@@ -1,11 +1,12 @@
 import pygame as pg
+import sys
 import time
 import random
 
 image_load_list = [["walk_1","걷기 1", (80, 80)], ["walk_2","걷기 2", (80, 80)], ["cloud_image", "구름",(120, 36)], ["dino_image", "dino", (80,80)], ["obstacle_1", "선인장_2", (120, 100)], ["obstacle_2", "선인장_3", (90, 90)], ["obstacle_3", "선인장_4", (50, 100)], ["obstacle_4", "선인장_5", (130, 86)], ["t_gameover", "게임오버_글자", (480,30)], ["gameover_image", "게임오버 다시하기", (88, 80)], ["die_image", "dino die" ,(80, 80)], ["hi_score", "하이스코어", (33, 18)]]
 
 for image_load in image_load_list:
-        globals()[image_load[0]] = pg.transform.scale(pg.image.load("image/{}.PNG".format(image_load[1])), image_load[2])
+        globals()[image_load[0]] = pg.transform.scale(pg.image.load("image/{}.png".format(image_load[1])), image_load[2])
 
 num_image_list = []
 for a in range(10):
@@ -13,10 +14,11 @@ for a in range(10):
 
 random_obstacle_list = [(obstacle_1, (120, 100)), (obstacle_2, (90, 90)), (obstacle_3, (50, 100)), (obstacle_4, (130, 86))]
 
+pg.init()
 screen = pg.display.set_mode((1000, 500))
 pg.display.set_caption("dino game")
 
-pg.init()
+
 pg.key.set_repeat(1, 1)
 
 collision_list = [(57, 53), (11, 75), (83, 14)]
@@ -174,6 +176,8 @@ while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             running = False
+            pg.quit()
+            sys.exit()
         if event.type == pg.KEYDOWN:
             if event.key == pg.K_SPACE:
                 if not die:
