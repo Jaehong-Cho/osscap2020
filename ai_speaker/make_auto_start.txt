@@ -1,0 +1,33 @@
+## Step 1
+## register the device
+
+googlesamples-assistant-devicetool project-id "___" register-model --[options]
+
+#find the registered model id and features
+googlesamples-assistant-devicetool project-id "___" list --model
+
+
+
+## Step 2
+## make the shell file
+
+nano google_auto_start.sh
+
+#body
+source env/bin/activate
+google-assistant-demo --device-model-id "____"
+#/body
+
+#allow to execute
+sudo chmod +x google_auto_start.sh
+
+
+
+## Step 3
+## write on the autostart file
+
+cd /etc/xdg/lxsession/LXDE-pi
+nano autostart
+
+#at the end of command "add it"
+./google-assistant-demo --device-model-id "____"

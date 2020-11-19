@@ -1,8 +1,2 @@
-print("Hello World")
-
-print("Hello, World!!!~~")
-
-print("Hello World!")
-print("Hello World!!!")
-
-print("Hello, World!!!~~")
+#hello
+print("Hello Wolrd!")
