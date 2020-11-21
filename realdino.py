@@ -74,7 +74,7 @@ def d_cloud(num):
             [[0, 7, 7, 0],
             [7, 7, 7, 7]]]
 
-    return cloud[num]
+    return cloud[num] 
 
 def d_boss(num):
     Boss = [[[0, 0, 7, 7, 7, 7, 0, 0],
