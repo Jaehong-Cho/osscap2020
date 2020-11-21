@@ -22,17 +22,20 @@ def draw_matrix(m):
         print()
 
 def game_set():
-    global iScreenDx, iScreenDy, top, left, i,j, jump, count, ob_x, o, t
+    global iScreenDx, iScreenDy, top, left, i,j, jump, count, ob_x, cd_x, o, c, speed, score
     iScreenDy = 16
     iScreenDx = 32
     top = 0
     left = 0
     ob_x = 33
+    cd_x = 33
     i = 0
     j = 0
-    t = 0.5
+    speed = 0
     o = random.randint(0,1)
+    c = random.randint(0,1)
     count = 0
+    score = 0
     jump = False
 
 
@@ -71,7 +74,7 @@ def d_cloud(num):
             [[0, 7, 7, 0],
             [7, 7, 7, 7]]]
 
-    return cloud(num)
+    return cloud[num]
 
 def d_boss(num):
     Boss = [[[0, 0, 7, 7, 7, 7, 0, 0],
@@ -185,6 +188,24 @@ while True:
     ob_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
     ob_tempBlk = ob_tempBlk + currBlk
     oScreen.paste(ob_tempBlk, top, left)
+
+    currBlk = Matrix(d_cloud(c))
+    if speed == 0:
+        if cd_x > 0:
+            cd_x -= 1
+        elif cd_x == 0:
+            c = random.randint(0,1)
+            cd_x = 37
+        speed = 1
+    elif speed == 1:
+        speed = 0
+    top = 1
+    left = cd_x
+
+    cd_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+    cd_tempBlk = cd_tempBlk + currBlk
+    oScreen.paste(cd_tempBlk, top, left)
+
     draw_matrix(oScreen); print()
 
     """
@@ -197,4 +218,6 @@ while True:
     draw_matrix(oScreen); print()
     """
 
-    time.sleep(0.5)
+    score += 1
+
+    time.sleep(0.2 )
