@@ -22,21 +22,34 @@ def draw_matrix(m):
         print()
 
 def game_set():
-    global iScreenDx, iScreenDy, top, left, i,j, jump, count, ob_x, cd_x, o, c, speed, score
+    global iScreenDx, iScreenDy, top, left, i,j,k, jump, count, ob_x, cd_x, bs_x, o, c, speed, score, boss_die
     iScreenDy = 16
     iScreenDx = 32
     top = 0
     left = 0
-    ob_x = 33
-    cd_x = 33
+    ob_x = 38
+    cd_x = 38
+    bs_x = 38
     i = 0
     j = 0
+    k = 0
     speed = 0
     o = random.randint(0,1)
     c = random.randint(0,1)
     count = 0
     score = 0
     jump = False
+    boss_die = False
+
+def d_warning():
+    warning = [[1, 0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0],
+               [1, 0, 1, 0, 1, 0, 3, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 0, 1, 0],
+               [1, 0, 1, 0, 1, 0, 3, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 0, 0],
+               [1, 0, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1],
+               [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1],
+               [0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 1]]
+
+    return warning
 
 
 def d_dino(num):
@@ -74,7 +87,7 @@ def d_cloud(num):
             [[0, 7, 7, 0],
             [7, 7, 7, 7]]]
 
-    return cloud[num] 
+    return cloud[num]
 
 def d_boss(num):
     Boss = [[[0, 0, 7, 7, 7, 7, 0, 0],
@@ -142,6 +155,8 @@ while True:
 
     iScreen = Matrix(game_screen)
     oScreen = Matrix(iScreen)
+
+    #공룡
     if jump == True:
         currBlk = Matrix(d_dino(0))
         count += 1
@@ -170,25 +185,25 @@ while True:
         dino_tempBlk = dino_tempBlk + currBlk
         oScreen.paste(dino_tempBlk, top, left)
 
+    #장애물
     currBlk = Matrix(d_obstacle(o))
     if ob_x > 0:
         ob_x -= 1
     elif ob_x == 0:
         o = random.randint(0,1)
         ob_x = 37
-    left = ob_x
-    if o == 0:
-        top = 12
-    elif o == 1:
-        top = 12
     if 6 <= ob_x <= 9:
         if j < 2:
+            print(score)
             break
+    left = ob_x
+    top = 12
 
     ob_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
     ob_tempBlk = ob_tempBlk + currBlk
     oScreen.paste(ob_tempBlk, top, left)
 
+    ##구름
     currBlk = Matrix(d_cloud(c))
     if speed == 0:
         if cd_x > 0:
@@ -206,18 +221,79 @@ while True:
     cd_tempBlk = cd_tempBlk + currBlk
     oScreen.paste(cd_tempBlk, top, left)
 
-    draw_matrix(oScreen); print()
+    #보스관련
+    if score >= 10 and score % 10 == 0:
+        #워닝메세지
+        currBlk = Matrix(d_warning())
+        top = 0
+        left = 5
+        wn_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+        wn_tempBlk = wn_tempBlk + currBlk
+        oScreen.paste(wn_tempBlk, top, left)
+        draw_matrix(oScreen); print()
+        time.sleep(3)
 
-    """
-    currBlk = Matrix(d_boss(j))
-    left = 24
-    top = 0
-    tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
-    tempBlk = tempBlk + currBlk
-    oScreen.paste(tempBlk, top, left)
+        # 보스 출현 애니메이션
+        oScreen = Matrix(iScreen)
+        currBlk = Matrix(d_dino(0))
+        top = 6
+        left = 7
+        dino_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+        dino_tempBlk = dino_tempBlk + currBlk
+        oScreen.paste(dino_tempBlk, top, left)
+        draw_matrix(oScreen); print()
+        currBlk = Matrix(d_boss(k))
+        while (bs_x >= 30):
+            bs_x -= 1
+            left = bs_x
+            top = 0
+            bs_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            bs_tempBlk = bs_tempBlk + currBlk
+            oScreen.paste(bs_tempBlk, top, left)
+            draw_matrix(oScreen); print()
+            time.sleep(0.4)
+        while(boss_die == False):
+            for event in pg.event.get():
+                if event.type == pg.QUIT:
+                    running = False
+                    pg.quit()
+                    sys.exit()
+                if event.type == pg.KEYDOWN:
+                    if event.key == pg.K_SPACE:
+                        jump == True
+
+            if jump == True:
+                currBlk = Matrix(d_dino(0))
+                count += 1
+                if count < 6:
+                    j += 1
+                elif count < 11:
+                    j -= 1
+                elif count == 11:
+                    count = 0
+                    jump = False
+                top = 6 - j
+                left = 7
+                dino_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+                dino_tempBlk = dino_tempBlk + currBlk
+                oScreen.paste(dino_tempBlk, top, left)
+
+            elif jump == False:
+                currBlk = Matrix(d_dino(i))
+                top = 6
+                left = 7
+                if i == 0:
+                    i = 1
+                elif i == 1:
+                    i = 0
+                dino_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+                dino_tempBlk = dino_tempBlk + currBlk
+                oScreen.paste(dino_tempBlk, top, left)
+
+
+
     draw_matrix(oScreen); print()
-    """
 
     score += 1
 
-    time.sleep(0.2 )
+    time.sleep(0.5)
