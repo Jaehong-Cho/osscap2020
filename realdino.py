@@ -402,6 +402,7 @@ while True:
             oScreen.paste(it_tempBlk, top, left)
 
             draw_matrix(oScreen); print()
+            score += 0.5
             time.sleep(t)
 
     boss_hp = 2
