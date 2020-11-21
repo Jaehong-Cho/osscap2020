@@ -22,7 +22,7 @@ def draw_matrix(m):
         print()
 
 def game_set():
-    global iScreenDx, iScreenDy, top, left, i,j, jump, count, ob_x
+    global iScreenDx, iScreenDy, top, left, i,j, jump, count, ob_x, o, t
     iScreenDy = 16
     iScreenDx = 32
     top = 0
@@ -30,6 +30,8 @@ def game_set():
     ob_x = 33
     i = 0
     j = 0
+    t = 0.5
+    o = random.randint(0,1)
     count = 0
     jump = False
 
@@ -55,16 +57,9 @@ def d_dino(num):
     return dino[num]
 
 def d_obstacle(num):
-    obstacle = [[[0, 0, 2, 0, 0],
-        [2, 0, 2, 0, 0],
-        [2, 0, 2, 0, 2],
-        [2, 2, 2, 0, 2],
-        [0, 0, 2, 2, 2],
+    obstacle = [[[0, 2, 2, 2, 0],
         [0, 0, 2, 0, 0]],
         [[0, 2, 0, 2, 0],
-        [2, 2, 0, 2, 2],
-        [2, 2, 0, 2, 2],
-        [0, 2, 0, 2, 0],
         [0, 2, 0, 2, 0]]]
 
     return obstacle[num]
@@ -156,15 +151,11 @@ while True:
             jump = False
         top = 6 - j
         left = 7
-        tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
-        tempBlk = tempBlk + currBlk
-        if tempBlk.anyGreaterThan(1):
-            print(5)
-        oScreen.paste(tempBlk, top, left)
-        draw_matrix(oScreen); print()
+        dino_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+        dino_tempBlk = dino_tempBlk + currBlk
+        oScreen.paste(dino_tempBlk, top, left)
 
-
-    if jump == False:
+    elif jump == False:
         currBlk = Matrix(d_dino(i))
         top = 6
         left = 7
@@ -172,26 +163,29 @@ while True:
             i = 1
         elif i == 1:
             i = 0
-        tempBlk = iScreen.clip(top, left, top+currBlk.get_dy(), left+currBlk.get_dx())
-        tempBlk = tempBlk + currBlk
-        if tempBlk.anyGreaterThan(1):
-            print(5)
-        oScreen.paste(tempBlk, top, left)
-        draw_matrix(oScreen); print()
+        dino_tempBlk = iScreen.clip(top, left, top+currBlk.get_dy(), left+currBlk.get_dx())
+        dino_tempBlk = dino_tempBlk + currBlk
+        oScreen.paste(dino_tempBlk, top, left)
 
-    currBlk = Matrix(d_obstacle(0))
+    currBlk = Matrix(d_obstacle(o))
     if ob_x > 0:
         ob_x -= 1
     elif ob_x == 0:
+        o = random.randint(0,1)
         ob_x = 37
     left = ob_x
-    top = 8
-    tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
-    tempBlk = tempBlk + currBlk
-    oScreen.paste(tempBlk, top, left)
+    if o == 0:
+        top = 12
+    elif o == 1:
+        top = 12
+    if 6 <= ob_x <= 9:
+        if j < 2:
+            break
+
+    ob_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+    ob_tempBlk = ob_tempBlk + currBlk
+    oScreen.paste(ob_tempBlk, top, left)
     draw_matrix(oScreen); print()
-
-
 
     """
     currBlk = Matrix(d_boss(j))
@@ -203,4 +197,4 @@ while True:
     draw_matrix(oScreen); print()
     """
 
-    time.sleep(0.1    )
+    time.sleep(0.5)
