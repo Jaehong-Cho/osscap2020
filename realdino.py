@@ -22,7 +22,8 @@ def draw_matrix(m):
         print()
 
 def game_set():
-    global iScreenDx, iScreenDy, top, left, i,j,k, jump, count, ob_x, cd_x, bs_x, o, c, speed, score, boss_die
+    global iScreenDx, iScreenDy, top, left, i,j,k,l, jump, count, ob_x, cd_x, bs_x, lz_x, lz2_x, it_x, a, o, c, l, speed, boss_die,\
+        gameover, boss_hp, t
     iScreenDy = 16
     iScreenDx = 32
     top = 0
@@ -30,14 +31,21 @@ def game_set():
     ob_x = 38
     cd_x = 38
     bs_x = 38
+    lz_x = 30
+    lz2_x = 29
+    it_x = 0
+    a = 7
     i = 0
     j = 0
     k = 0
+    t = 0.5
     speed = 0
     o = random.randint(0,1)
     c = random.randint(0,1)
+    l = 1
     count = 0
-    score = 0
+    boss_hp = 2
+    gameover = False
     jump = False
     boss_die = False
 
@@ -121,7 +129,20 @@ def d_boss(num):
 
     return Boss[num]
 
+def d_lazer(num):
+    lazer = [[[1, 1, 1, 0]],
+             [[1, 1, 0],
+              [1, 1, 0]],
+             [[1, 1, 0],
+              [1, 1, 0]]]
 
+    return lazer[num]
+
+def d_item():
+    item = [[1],
+        [1]]
+
+    return item
 
 game_screen = [
 [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, -8, -8, -8, -8, -8, -8, -8],
@@ -141,7 +162,29 @@ game_screen = [
 [-8, -8, -8, -8, -8, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, -8, -8, -8, -8, -8, -8, -8, -8],
 [-8, -8, -8, -8, -8, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, -8, -8, -8, -8, -8, -8, -8, -8]]
 
+def d_boss_screen(a):
+
+    boss_screen = [
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, 0, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, 0, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, a, 0, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, 0, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, 0, a, a, a, a, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, a, a, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, a, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, 0, a, a, a, a, a, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, a, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, 0, 0, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, 0, a, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, a, a, a, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, a, a, 0, a, a, 0, a, 0, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, -8, -8, -8, -8, -8, -8, -8, -8],
+    [-8, -8, -8, -8, -8, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, -8, -8, -8, -8, -8, -8, -8, -8]]
+    return boss_screen
+
 game_set()
+score = 0
 
 while True:
     for event in pg.event.get():
@@ -192,7 +235,7 @@ while True:
     elif ob_x == 0:
         o = random.randint(0,1)
         ob_x = 37
-    if 6 <= ob_x <= 9:
+    if 5 <= ob_x <= 10:
         if j < 2:
             print(score)
             break
@@ -222,7 +265,7 @@ while True:
     oScreen.paste(cd_tempBlk, top, left)
 
     #보스관련
-    if score >= 10 and score % 10 == 0:
+    if score >= 500 and score % 500 == 0:
         #워닝메세지
         currBlk = Matrix(d_warning())
         top = 0
@@ -252,7 +295,10 @@ while True:
             oScreen.paste(bs_tempBlk, top, left)
             draw_matrix(oScreen); print()
             time.sleep(0.4)
-        while(boss_die == False):
+
+        game_set()
+
+        while(boss_hp > 0):
             for event in pg.event.get():
                 if event.type == pg.QUIT:
                     running = False
@@ -260,7 +306,14 @@ while True:
                     sys.exit()
                 if event.type == pg.KEYDOWN:
                     if event.key == pg.K_SPACE:
-                        jump == True
+                        jump = True
+
+            if boss_hp == 2:
+                a = 7
+            elif boss_hp == 1:
+                a = -8
+            iScreen = Matrix(d_boss_screen(a))
+            oScreen = Matrix(iScreen)
 
             if jump == True:
                 currBlk = Matrix(d_dino(0))
@@ -278,7 +331,7 @@ while True:
                 dino_tempBlk = dino_tempBlk + currBlk
                 oScreen.paste(dino_tempBlk, top, left)
 
-            elif jump == False:
+            if jump == False:
                 currBlk = Matrix(d_dino(i))
                 top = 6
                 left = 7
@@ -290,10 +343,78 @@ while True:
                 dino_tempBlk = dino_tempBlk + currBlk
                 oScreen.paste(dino_tempBlk, top, left)
 
+            #레이저
+            if l != 0 and lz2_x == 15:
+                l = random.randint(0,1)
+            if l == 0:
+                top = 2
+                if lz_x > 1:
+                    lz_x -= 2
+                elif lz_x == 0 or lz_x == 1:
+                    lz_x = 29
+                if 7 <= lz_x <= 10:
+                    if j > 3:
+                        print(score)
+                        gameover = True
+                        break
+                left = lz_x
 
+                currBlk = Matrix(d_lazer(l))
+                lz_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+                lz_tempBlk = lz_tempBlk + currBlk
+                oScreen.paste(lz_tempBlk, top, left)
+
+            top = 11
+            if lz2_x > 1:
+                lz2_x -= 2
+            elif lz2_x == 0 or lz2_x == 1:
+                lz2_x = 28
+            if 5 <= lz2_x <= 10:
+                if j < 3:
+                    print(score)
+                    gameover = True
+                    break
+            left = lz2_x
+
+            currBlk = Matrix(d_lazer(1))
+            lz_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            lz_tempBlk = lz_tempBlk + currBlk
+            oScreen.paste(lz_tempBlk, top, left)
+
+            #아이템
+            if it_x == 0 and 10 == random.randint(1,10):
+                it_x = 29
+            if it_x > 0:
+                it_x -= 1
+            elif it_x == 0:
+                it_x = 0
+            if 6 <= it_x <= 10:
+                if j > 0:
+                    it_x = 0
+                    boss_hp -= 1
+                    score += 100
+            left = it_x
+            top = 4
+
+            currBlk = Matrix(d_item())
+            it_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            it_tempBlk = it_tempBlk + currBlk
+            oScreen.paste(it_tempBlk, top, left)
+
+            draw_matrix(oScreen); print()
+            time.sleep(t)
+
+    boss_hp = 2
+
+    if gameover:
+        print(score)
+        break
 
     draw_matrix(oScreen); print()
 
     score += 1
-
-    time.sleep(0.5)
+    if t > 0.3:
+        t = t*0.99
+    elif t < 0.3:
+        t = t*0.999
+    time.sleep(t)
