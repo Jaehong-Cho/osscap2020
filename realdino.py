@@ -608,7 +608,7 @@ while True:
 
     draw_matrix(oScreen); print()
 
-    score += 20
+    score += 1
     if t > 0.3:
         t = t*0.99
     elif t < 0.3:
