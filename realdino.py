@@ -23,7 +23,7 @@ def draw_matrix(m):
 
 def game_set():
     global iScreenDx, iScreenDy, top, left, i,j,k,l, jump, count, ob_x, cd_x, bs_x, lz_x, lz2_x, it_x, a, o, c, l, speed, boss_die,\
-        gameover, boss_hp, t
+        gameover, boss_hp, t, sc
     iScreenDy = 16
     iScreenDx = 32
     top = 0
@@ -40,6 +40,7 @@ def game_set():
     k = 0
     t = 0.5
     speed = 0
+    sc = 0
     o = random.randint(0,1)
     c = random.randint(0,1)
     l = 1
@@ -144,6 +145,116 @@ def d_item():
 
     return item
 
+def timescore(t):
+    if t == 0:
+        timeBlk =  [[0, 1, 1, 1, 0],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [1, 0, 0, 0, 1],
+                    [0, 1, 1, 1, 0]]
+
+    elif t == 1:
+        timeBlk =  [[0, 0, 1, 0, 0],
+                    [0, 1, 1, 0, 0],
+                    [1, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                    [0, 0, 1, 0, 0],
+                    [1, 1, 1, 1, 1]]
+    elif t == 2:
+        timeBlk = [
+           [0, 1, 1, 1, 0],
+           [1, 0, 0, 0, 1],
+           [0, 0, 0, 0, 1],
+           [0, 0, 0, 1, 0],
+           [0, 0, 1, 0, 0],
+           [0, 1, 0, 0, 0],
+           [1, 1, 1, 1, 1]]
+
+    elif t == 3:
+        timeBlk = [
+             [0, 1, 1, 1, 0],
+             [1, 0, 0, 0, 1],
+             [0, 0, 0, 0, 1],
+             [0, 0, 1, 1, 0],
+             [0, 0, 0, 0, 1],
+             [1, 0, 0, 0, 1],
+             [0, 1, 1, 1, 0]]
+
+    elif t == 4:
+        timeBlk = [
+            [0, 0, 0, 0, 0],
+            [0, 0, 0, 1, 0],
+            [0, 0, 1, 1, 0],
+            [0, 1, 0, 1, 0],
+            [1, 1, 1, 1, 1],
+            [0, 0, 0, 1, 0],
+            [0, 0, 0, 1, 0]]
+
+    elif t == 5:
+        timeBlk = [
+            [1, 1, 1, 1, 1],
+            [1, 0, 0, 0, 0],
+            [1, 0, 0, 0, 0],
+            [0, 1, 1, 1, 0],
+            [0, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1],
+            [0, 1, 1, 1, 0]]
+
+    elif t == 6:
+        timeBlk = [
+           [0, 1, 1, 1, 0],
+           [1, 0, 0, 0, 0],
+           [1, 0, 0, 0, 0],
+           [1, 1, 1, 1, 0],
+           [1, 0, 0, 0, 1],
+           [1, 0, 0, 0, 1],
+           [0, 1, 1, 1, 0]]
+
+    elif t == 7:
+        timeBlk = [
+             [1, 1, 1, 1, 1],
+             [1, 0, 0, 0, 1],
+             [1, 0, 0, 0, 1],
+             [1, 0, 0, 0, 1],
+             [0, 0, 0, 0, 1],
+             [0, 0, 0, 0, 1],
+             [0, 0, 0, 0, 1]]
+
+    elif t == 8:
+        timeBlk = [
+             [0, 1, 1, 1, 0],
+             [1, 0, 0, 0, 1],
+             [1, 0, 0, 0, 1],
+             [0, 1, 1, 1, 0],
+             [1, 0, 0, 0, 1],
+             [1, 0, 0, 0, 1],
+             [0, 1, 1, 1, 0]]
+
+    elif t == 9:
+        timeBlk = [
+            [0, 1, 1, 1, 0],
+            [1, 0, 0, 0, 1],
+            [1, 0, 0, 0, 1],
+            [0, 1, 1, 1, 1],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 0, 1],
+            [0, 0, 0, 1, 0]]
+
+    return timeBlk
+
+
+def d_gameover():
+
+    GameOver = [[0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 1, 0, 1, 0, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1],
+                [0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 0, 1],
+                [1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1, 1, 1],
+                [0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 1, 1, 0],
+                [0, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 0, 1]]
+    return GameOver
+
 game_screen = [
 [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, -8, -8, -8, -8, -8, -8, -8],
 [-8, -8, -8, -8, -8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -8, -8, -8, -8, -8, -8, -8, -8],
@@ -183,8 +294,10 @@ def d_boss_screen(a):
     [-8, -8, -8, -8, -8, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, 0, 3, -8, -8, -8, -8, -8, -8, -8, -8]]
     return boss_screen
 
+
+
 game_set()
-score = 0
+score = 1
 
 while True:
     for event in pg.event.get():
@@ -238,7 +351,7 @@ while True:
     if 5 <= ob_x <= 10:
         if j < 2:
             print(score)
-            break
+            gameover = True
     left = ob_x
     top = 12
 
@@ -265,7 +378,7 @@ while True:
     oScreen.paste(cd_tempBlk, top, left)
 
     #보스관련
-    if score >= 500 and score % 500 == 0:
+    if score == 200 or score % 500 == 0:
         #워닝메세지
         currBlk = Matrix(d_warning())
         top = 0
@@ -392,7 +505,7 @@ while True:
                 if j > 0:
                     it_x = 0
                     boss_hp -= 1
-                    score += 100
+                    score += 50
             left = it_x
             top = 4
 
@@ -402,18 +515,100 @@ while True:
             oScreen.paste(it_tempBlk, top, left)
 
             draw_matrix(oScreen); print()
-            score += 0.5
+
+            if sc == 0:
+                score += 1
+                sc = 1
+            elif sc == 1:
+                sc = 0
+
             time.sleep(t)
 
     boss_hp = 2
 
     if gameover:
         print(score)
+        oScreen = Matrix(game_screen)
+        currBlk = Matrix(d_gameover())
+        top = 0
+        left = 5
+        gv_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+        gv_tempBlk = gv_tempBlk + currBlk
+        oScreen.paste(gv_tempBlk, top, left)
+
+        if 10 <= score < 100:
+            currBlk = Matrix(timescore((score - score%10)/10))
+            top = 6
+            left = 16
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+            currBlk = Matrix(timescore(score % 10))
+            top = 6
+            left = 22
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+        elif 100 <= score < 1000:
+            currBlk = Matrix(timescore((score - score % 100) / 100))
+            top = 6
+            left = 12
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+            currBlk = Matrix(timescore((score % 100 - score%10)/10))
+            top = 6
+            left = 18
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+            currBlk = Matrix(timescore(score % 10))
+            top = 6
+            left = 24
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+        elif 1000 <= score < 10000:
+            currBlk = Matrix(timescore((score - score % 1000) / 1000))
+            top = 6
+            left = 9
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+            currBlk = Matrix(timescore((score % 1000 - score % 100) / 100))
+            top = 6
+            left = 15
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+            currBlk = Matrix(timescore((score % 100 - score % 10) / 10))
+            top = 6
+            left = 21
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+            currBlk = Matrix(timescore(score % 10))
+            top = 6
+            left = 27
+            sc_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+            sc_tempBlk = sc_tempBlk + currBlk
+            oScreen.paste(sc_tempBlk, top, left)
+
+        draw_matrix(oScreen); print()
+        time.sleep(3)
         break
 
     draw_matrix(oScreen); print()
 
-    score += 1
+    score += 20
     if t > 0.3:
         t = t*0.99
     elif t < 0.3:
