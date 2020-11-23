@@ -1,4 +1,6 @@
 from matrix import *
+import LED_display as LMD
+import threading
 import pygame as pg
 import sys
 import time
@@ -7,18 +9,34 @@ import random
 pg.init()
 screen = pg.display.set_mode((1,1))
 
+def LED_init():
+    thread = threading.Thread(target = LMD.main, args())
+    thread.setDaemon(True)
+    thread.start()
+    return
+
 def draw_matrix(m):
     array = m.get_array()
     for y in range(m.get_dy()):
-        for x in range(m.get_dx()):
+        for x in range(m.get_dx() - 8):
             if array[y][x] == 0:
-                print("□ ", end='')
-            elif 1 <= array[y][x] <= 7:
-                print("■ ", end='')
-            elif array[y][x] < 0:
-                print("ㅇ ", end='')
-            else:
-                print("XX", end='')
+                LMD.set_pixel(y, 19-x, 0)
+            elif array[y][x] == 1:
+                LMD.set_pixel(y, 19-x, 1)
+            elif array[y][x] == 2:
+                LMD.set_pixel(y, 19-x, 2)
+            elif array[y][x] == 3:
+                LMD.set_pixel(y, 19-x, 3)
+            elif array[y][x] == 4:
+                LMD.set_pixel(y, 19-x, 4)
+            elif array[y][x] == 4:
+                LMD.set_pixel(y, 19-x, 4)
+            elif array[y][x] == 5:
+                LMD.set_pixel(y, 19-x, 5)
+            elif array[y][x] == 6:
+                LMD.set_pixel(y, 19-x, 6)
+            elif array[y][x] == 7:
+                LMD.set_pixel(y, 19-x, 7) 
         print()
 
 def game_set():
@@ -299,6 +317,7 @@ def d_boss_screen(a):
 game_set()
 score = 1
 
+LED_init()
 while True:
     for event in pg.event.get():
         if event.type == pg.QUIT:
