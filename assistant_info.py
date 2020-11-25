@@ -220,17 +220,26 @@ def arrayBlk(a):
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]],
+         [[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]]
 
     return arrayBlk[a]
 
 a = 0
 top = 2
-x = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-for i in range(17):
+x = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+for i in range(18):
      x[i] = 42
 left = 0
-i = 0
 
 while a<=13:
      iScreen = Matrix(arrayScreen)
@@ -240,8 +249,9 @@ while a<=13:
      tempBlk = iScreen.clip(top, left, top+currBlk.get_dy(), left+currBlk.get_dx())
      tempBlk = tempBlk + currBlk
      oScreen.paste(tempBlk, top, left)
+     x[a] -= 1
 
-     if x[a] < 25:
+     if x[a] < 32:
           currBlk = Matrix(arrayBlk(a+1))
           print(x[a+1])
           left = x[a+1]
@@ -250,7 +260,7 @@ while a<=13:
           oScreen.paste(tempBlk, top, left)
           x[a+1] -= 1
 
-     if x[a+1] < 25:
+     if x[a+1] < 32:
           currBlk = Matrix(arrayBlk(a+2))
           left = x[a+2]
           tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
@@ -258,8 +268,22 @@ while a<=13:
           oScreen.paste(tempBlk, top, left)
           x[a+2] -= 1
 
-     draw_matrix(oScreen); print()
-     x[a] -= 1
-     if x[a] == 0:
+     if x[a+2] < 32:
+          currBlk = Matrix(arrayBlk(a+3))
+          left = x[a+3]
+          tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+          tempBlk = tempBlk + currBlk
+          oScreen.paste(tempBlk, top, left)
+          x[a+3] -= 1
+
+     if x[a+3] < 32:
+          currBlk = Matrix(arrayBlk(a+4))
+          left = x[a+4]
+          tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
+          tempBlk = tempBlk + currBlk
+          oScreen.paste(tempBlk, top, left)
+          x[a+4] -= 1
           a += 1
+
+     draw_matrix(oScreen); print()
      time.sleep(0.1)
