@@ -13,21 +13,21 @@ def draw_matrix(m):
 	for y in range(16):
 		for x in range(37):
 			if array[y][x] == 0:
-				LMD.set_pixel(x, y, 0)
+				LMD.set_pixel(x-5, y, 0)
 			elif array[y][x] == 1:
-				LMD.set_pixel(x, y, 1)
+				LMD.set_pixel(x-5, y, 1)
 			elif array[y][x] == 2:
-				LMD.set_pixel(x, y, 2)
+				LMD.set_pixel(x-5, y, 2)
 			elif array[y][x] == 3:
-				LMD.set_pixel(x, y, 3)
+				LMD.set_pixel(x-5, y, 3)
 			elif array[y][x] == 4:
-				LMD.set_pixel(x, y, 4)
+				LMD.set_pixel(x-5, y, 4)
 			elif array[y][x] == 5:
-				LMD.set_pixel(x, y, 5)
+				LMD.set_pixel(x-5, y, 5)
 			elif array[y][x] == 6:
-				LMD.set_pixel(x, y, 6)
+				LMD.set_pixel(x-5, y, 6)
 			elif array[y][x] == 7:
-				LMD.set_pixel(x, y, 7)
+				LMD.set_pixel(x-5, y, 7)
 		print()
 
 arrayScreen = [
@@ -48,7 +48,7 @@ arrayScreen = [
 	[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
 	[1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1]]
 
-text = [[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+arrayBlk = [[[0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	 [0, 0, 0, 0, 0, 0, 1, 0, 1, 0],
 	 [0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
 	 [0, 0, 0, 0, 0, 1, 1, 1, 1, 0],
