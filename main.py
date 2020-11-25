@@ -20,12 +20,12 @@ while True:
     print("1. dino game \n2.Turn off")
     choice = int(input("Select the Mode : "))
     if choice == 1:
-        py_realdino()
+        realdino()
         continue
 
     elif choice == 2:
         continue
-
+        
     else:
         print("잘못된 번호를 입력하셨습니다.")
         continue
