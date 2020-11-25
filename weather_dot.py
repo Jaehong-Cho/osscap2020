@@ -116,4 +116,3 @@ def weather_icon(char):
 		[0, 0, 6, 6, 6, 6, 6, 6, 6, 6, 0, 3, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
 	return icon
-icon = weather_icon("맑음")
