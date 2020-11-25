@@ -20,7 +20,7 @@ while True:
     print("1. dino game \n2.Turn off")
     choice = int(input("Select the Mode : "))
     if choice == 1:
-        realdino()
+        py_realdino()
         continue
 
     elif choice == 2:
