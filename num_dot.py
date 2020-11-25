@@ -90,6 +90,6 @@ def get_num (a):
 		[0, x, x  x, 0, 0],
 		[0, 0, 0, 0, 0, 0]]
 	return blk
-def get_minu():
+def get_minus():
 	minus = [x, x, x]
 	return minus
