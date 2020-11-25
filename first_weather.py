@@ -50,7 +50,7 @@ game_screen = [
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0],
+	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
@@ -77,7 +77,7 @@ oScreen.paste(tmpBlk, top, left)
 curr_tmp = int(info[0][:-1])
 if curr_tmp < 0 :
 	curr_tmp = curr_tmp[1:]
-	option_blk = get_minus()
+	option_blk = get_minus(7)
 	#좌표
 	top = 28
 	left = 1
@@ -88,7 +88,7 @@ if curr_tmp < 0 :
 	oScreen.paste(tmpBlk, top, left)
 
 if 0 <= curr_tmp and curr_tmp < 10 :
-	fir_Blk = get_num(curr_tmp)
+	fir_Blk = get_num(curr_tmp, 7)
 	#좌표
 	top = 16
 	left = 4
@@ -98,7 +98,7 @@ if 0 <= curr_tmp and curr_tmp < 10 :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 else :
-	fir_Blk = get_num(curr_tmp // 10)
+	fir_Blk = get_num(curr_tmp // 10, 7)
     #좌표
 	top = 16
 	left = 4
@@ -108,7 +108,7 @@ else :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 
-	sec_Blk = get_num(curr_tmp % 10)
+	sec_Blk = get_num(curr_tmp % 10, 7)
 	#좌표
 	top = 16
 	left = 10
@@ -124,7 +124,7 @@ else :
 max_tmp = int(info[3][:-1])
 if max_tmp < 0 :
 	max_tmp = max_tmp[1:]
-	option_blk = get_minus()
+	option_blk = get_minus(1)
 	#좌표
 	top = 4
 	left = 16
@@ -135,7 +135,7 @@ if max_tmp < 0 :
 	oScreen.paste(tmpBlk, top, left)
 
 if 0 <= curr_tmp and curr_tmp < 10 :
-	fir_Blk = get_num(curr_tmp)
+	fir_Blk = get_num(curr_tmp, 1)
 	#좌표
 	top = 1
 	left = 19
@@ -145,7 +145,7 @@ if 0 <= curr_tmp and curr_tmp < 10 :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 else :
-	fir_Blk = get_num(curr_tmp // 10)
+	fir_Blk = get_num(curr_tmp // 10, 1)
 	#좌표
 	top = 1
 	left = 19
@@ -155,7 +155,7 @@ else :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 
-	sec_Blk = get_num(curr_tmp % 10)
+	sec_Blk = get_num(curr_tmp % 10, 1)
 	#좌표
 	top = 1
 	left = 25
@@ -171,7 +171,7 @@ else :
 min_tmp = int(info[2][:-1])
 if min_tmp < 0 :
 	min_tmp = min_tmp[1:]
-	option_blk = get_minus()
+	option_blk = get_minus(4)
 	#좌표
 	top = 12
 	left = 16
@@ -183,7 +183,7 @@ if min_tmp < 0 :
 
 
 if 0 <= curr_tmp and curr_tmp < 10 :
-	fir_Blk = get_num(curr_tmp)
+	fir_Blk = get_num(curr_tmp, 4)
 	#좌표
 	top = 8
 	left = 19
@@ -193,7 +193,7 @@ if 0 <= curr_tmp and curr_tmp < 10 :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 else :
-	fir_Blk = get_num(curr_tmp // 10)
+	fir_Blk = get_num(curr_tmp // 10, 4)
 	#좌표
 	top = 8
 	left = 19
@@ -203,7 +203,7 @@ else :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 
-	sec_Blk = get_num(curr_tmp % 10)
+	sec_Blk = get_num(curr_tmp % 10, 4)
 	#좌표
 	top = 8
 	left = 25

@@ -1,4 +1,4 @@
-def get_num (a):
+def get_num (a, x):
 	if a == 0: 
 		blk = [
 		[0, 0, 0, 0, 0, 0],
@@ -99,6 +99,6 @@ def get_num (a):
 		[0, 0, 0, 0, 0, 0],
 		[0, 0, 0, 0, 0, 0]]
 	return blk
-def get_minus():
+def get_minus(x):
 	minus = [x, x, x]
 	return minus
