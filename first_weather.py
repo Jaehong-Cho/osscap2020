@@ -1,5 +1,6 @@
 from matrix import *
 import LED_display as LMD
+import threading
 import pygame as pg
 import sys
 import time
