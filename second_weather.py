@@ -103,7 +103,7 @@ micro_color = get_color(micro_char)
 top = 1
 left = 9
 while micro_num > 0 :
-	tmp = get_num(micro_num % 10)
+	tmp = get_num(micro_num % 10, micro_color)
 	currBlk = Matrix(tmp)
 	tmpBlk = iScreen.clip(top, left, top+currBlk.get_dy(), left+currBlk.get_dx())
 	tmpBlk = tmpBlk + currBlk
@@ -119,7 +119,7 @@ super_micro_color = get_color(super_micro_char)
 top = 8
 left = 9
 while super_micro_num > 0 :
-	tmp = get_num(super_micro_num % 10)
+	tmp = get_num(super_micro_num % 10, super_micro_color)
 	currBlk = Matrix(tmp)
 	tmpBlk = iScreen.clip(top, left, top+currBlk.get_dy(), left+currBlk.get_dx())
 	tmpBlk = tmpBlk + currBlk
