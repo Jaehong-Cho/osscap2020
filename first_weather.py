@@ -7,6 +7,7 @@ import time
 import random
 import weather
 import weather_dot as wd
+from num_dot import *
 
 def LED_init():
 	thread = threading.Thread(target = LMD.main, args=())
