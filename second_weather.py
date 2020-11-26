@@ -99,25 +99,18 @@ with open ("weather.txt", "r", encoding="utf8") as text:
 
 
 #미세먼지 정보
-micro_num1 = info[4][:3]
-micro_num2 = info[4][:2]
-micro_char1 = info[4][-5:-1]
-micro_char2 = info[4][-3:-1]
-if micro_char2 == "좋음" or micro_char2 == "보통":
-	micro_num = int(micro_num2)
-	micro_color = get_color(micro_char1)
-elif micro_char1 == "매우나쁨":
-	micro_num = int(micro_num1)
-	micro_color = get_color(micro_char1)
-elif micro_char2 == "나쁨" and micro_num2 > 80:
-	micro_num = int(micro_num2)
-	micro_color = get_color(micro_char2)
+micro_num = int(info[4][:-5])
+if 0 < micro_num and micro_num < 31:
+	micro_color = get_color("좋음")
+elif micro_num < 81:
+	micro_color = get_color("보통")
+elif micro_num < 151:
+	micro_color = get_color("나쁨")
 else:
-	micro_num = int(micro_num1)
-	micro_color = get_color(micro_char2)
+	micro_color = get_color("매우나쁨")
 
 top = 1
-left = 18
+left = 24
 while micro_num > 0 :
 	tmp = get_num(micro_num % 10, micro_color)
 	currBlk = Matrix(tmp)
@@ -128,19 +121,19 @@ while micro_num > 0 :
 	micro_num = micro_num // 10
 	
 #초미세먼지 정보
-super_micro_num1 = info[5][:-5]
-super_micro_num2 = info[5][:-7]
-super_micro_char1 = info[5][-3:-1]
-super_micro_char2 = info[5][-5:-1]
-if super_micro_char2 == "매우나쁨":
-	super_micro_num = int(super_micro_num2)
-	super_micro_color = get_color(super_micro_char2)
-else:
-	super_micro_num = int(super_micro_num1)
-	super_micro_color = get_color(super_micro_char1)
+super_micro_num = int(info[5][:-5])
+if 0 < super_micro_num  and super_micro_num < 16:
+	super_micro_color = get_color("좋음")
+elif super_micro_num < 36:
+	super_micro_color = get_color("보통")
+elif super_micro_num < 76:
+	super_micro_color = get_color("나쁨")
+else :
+	super_micro_color = get_color("매우나쁨")
+
 
 top = 8
-left = 18
+left = 24
 while super_micro_num > 0 :
 	tmp = get_num(super_micro_num % 10, super_micro_color)
 	currBlk = Matrix(tmp)
