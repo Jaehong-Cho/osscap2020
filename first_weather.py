@@ -19,21 +19,21 @@ def draw_matrix(m):
 	for y in range(16):
 		for x in range (37):
 			if array[y][x] == 0:
-				LMD.set_pixel(x-5, y, 0)
+				LMD.set_pixel(x, y, 0)
 			elif array[y][x] == 1:
-			    LMD.set_pixel(x-5, y, 1)
+			    LMD.set_pixel(x, y, 1)
 			elif array[y][x] == 2:
-			    LMD.set_pixel(x-5, y, 2)
+			    LMD.set_pixel(x, y, 2)
 			elif array[y][x] == 3:
-			    LMD.set_pixel(x-5, y, 3)
+			    LMD.set_pixel(x, y, 3)
 			elif array[y][x] == 4:
-			    LMD.set_pixel(x-5, y, 4)
+			    LMD.set_pixel(x, y, 4)
 			elif array[y][x] == 5:
-			    LMD.set_pixel(x-5, y, 5)
+			    LMD.set_pixel(x, y, 5)
 			elif array[y][x] == 6:
-			    LMD.set_pixel(x-5, y, 6)
+			    LMD.set_pixel(x, y, 6)
 			elif array[y][x] == 7:
-			    LMD.set_pixel(x-5, y, 7)
+			    LMD.set_pixel(x, y, 7)
 		print()
 
 game_screen = [
@@ -53,6 +53,11 @@ game_screen = [
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
 	[0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
+###prepare the initial screen output
+iScreen = Matrix(game_screen)
+oScreen = Matrix(iScreen)
+LED_init()
 
 
 # weather.txt 파일에 접근하여 정보 가져오기
@@ -211,4 +216,5 @@ else :
 	tmpBlk = iScreen.clip(top, left, top+currBlk.get_dy(), left+currBlk.get_dx())
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
+draw_matrix(oScreen); print()
 
