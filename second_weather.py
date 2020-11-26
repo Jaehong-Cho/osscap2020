@@ -99,10 +99,18 @@ with open ("weather.txt", "r", encoding="utf8") as text:
 
 
 #미세먼지 정보
-#micro_num = int(info[4][:3])#
-micro_char = info[4][-3:-1]
-if micro_char == "보통":
-##########micro_num = int(info[4][:-5]
+micro_num1 = int(info[4][:3])
+micro_num2 = int(info[4][:2])
+micro_char1 = info[4][-5:-1]
+micro_char2 = info[4][-3:-1]
+if micro_char2 == "좋음" or micro_char2 == "보통":
+	micro_num = micro_num2
+elif micro_char1 == "매우나쁨":
+	micro_num = micro_num1
+elif micro_char2 == "나쁨" and micro_num2 > 80:
+	micro_num = micro_num2
+else:
+	micro_num = micro_num1
 micro_color = get_color(micro_char)
 
 top = 1
