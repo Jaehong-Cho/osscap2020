@@ -105,13 +105,16 @@ micro_char1 = info[4][-5:-1]
 micro_char2 = info[4][-3:-1]
 if micro_char2 == "좋음" or micro_char2 == "보통":
 	micro_num = micro_num2
+	micro_color = get_color(micro_char1)
 elif micro_char1 == "매우나쁨":
 	micro_num = micro_num1
+	micro_color = get_color(micro_char1)
 elif micro_char2 == "나쁨" and micro_num2 > 80:
 	micro_num = micro_num2
+	micro_color = get_color(micro_char2)
 else:
 	micro_num = micro_num1
-micro_color = get_color(micro_char)
+	micro_color = get_color(micro_char2)
 
 top = 1
 left = 18
@@ -125,9 +128,16 @@ while micro_num > 0 :
 	micro_num = micro_num // 10
 	
 #초미세먼지 정보
-super_micro_num = int(info[5][:2])
-super_micro_char = info[5][-3:-1]
-super_micro_color = get_color(super_micro_char)
+super_micro_num1 = info[5][:-5]
+super_micro_num2 = info[5][:-7]
+super_micro_char1 = info[5][-3:-1]
+super_micro_char2 = info[5][-5:-1]
+if super_micro_char2 == "매우나쁨":
+	super_micro_num = int(super_micro_num2)
+	super_micro_color = get_color(super_micro_char2)
+else:
+	super_micro_num = int(super_micro_num1)
+	super_micro_color = get_color(super_micro_char1)
 
 top = 8
 left = 18
