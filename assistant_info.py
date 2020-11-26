@@ -1,10 +1,14 @@
 from matrix import *
 import LED_display as LMD
 import threading
-import pygame as pg
 import sys
 import time
 import random
+def LED_init():
+    thread = threading.Thread(target = LMD.main, args=())
+    thread.setDaemon(True)
+    thread.start()
+    return
 
 def draw_matrix(m):
     array = m.get_array()
