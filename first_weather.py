@@ -80,7 +80,7 @@ oScreen.paste(tmpBlk, top, left)
 #현재 온도 표시 글자색-흰색
 curr_tmp = int(info[0][:-1])
 if curr_tmp < 0 :
-	curr_tmp = curr_tmp[1:]
+	curr_tmp = -curr_tmp
 	option_blk = get_minus(7)
 	#좌표
 	top = 13
@@ -127,7 +127,7 @@ else :
 # 글자색 - 빨간색
 max_tmp = int(info[3][:-2])
 if max_tmp < 0 :
-	max_tmp = max_tmp[1:]
+	max_tmp = -max_tmp
 	option_blk = get_minus(1)
 	#좌표
 	top = 4
@@ -174,7 +174,7 @@ else :
 # 글자색 - 파랑색
 min_tmp = int(info[2][:-2])
 if min_tmp < 0 :
-	min_tmp = min_tmp[1:]
+	min_tmp = -min_tmp
 	option_blk = get_minus(4)
 	#좌표
 	top = 12
