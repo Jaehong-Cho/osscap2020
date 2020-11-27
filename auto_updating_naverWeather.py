@@ -48,7 +48,7 @@ def get_info():
 
 def weather_main():
 # 매시간마다 새로운 날씨 정보를 스크랩
-    schedule.every(1).minutes.do(get_info)
+    schedule.every(60).minutes.do(get_info)
 
     while True:
         schedule.run_pending()
