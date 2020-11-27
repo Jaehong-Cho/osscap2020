@@ -17,9 +17,9 @@ def LED_init():
 def draw_matrix(m):
 	array = m.get_array()
 	for y in range(16):
-		for x in range (37):
+		for x in range (32):
 			if array[y][x] == 0:
-				LMD.set_pixel(x, y, 0)
+			    LMD.set_pixel(x, y, 0)
 			elif array[y][x] == 1:
 			    LMD.set_pixel(x, y, 1)
 			elif array[y][x] == 2:
@@ -83,7 +83,7 @@ if curr_tmp < 0 :
 	curr_tmp = curr_tmp[1:]
 	option_blk = get_minus(7)
 	#좌표
-	top = 28
+	top = 13
 	left = 1
 
 	currBlk = Matrix(option_blk)
@@ -94,7 +94,7 @@ if curr_tmp < 0 :
 if 0 <= curr_tmp and curr_tmp < 10 :
 	fir_Blk = get_num(curr_tmp, 7)
 	#좌표
-	top = 16
+	top = 9
 	left = 4
 
 	currBlk = Matrix(fir_Blk)
@@ -104,7 +104,7 @@ if 0 <= curr_tmp and curr_tmp < 10 :
 else :
 	fir_Blk = get_num(curr_tmp // 10, 7)
     #좌표
-	top = 16
+	top = 9
 	left = 4
 
 	currBlk = Matrix(fir_Blk)
@@ -114,7 +114,7 @@ else :
 
 	sec_Blk = get_num(curr_tmp % 10, 7)
 	#좌표
-	top = 16
+	top = 9
 	left = 10
 
 	currBlk = Matrix(sec_Blk)
@@ -125,7 +125,7 @@ else :
 
 # 최고기온 표시
 # 글자색 - 빨간색
-max_tmp = int(info[3][:-1])
+max_tmp = int(info[3][:-2])
 if max_tmp < 0 :
 	max_tmp = max_tmp[1:]
 	option_blk = get_minus(1)
@@ -138,8 +138,8 @@ if max_tmp < 0 :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 
-if 0 <= curr_tmp and curr_tmp < 10 :
-	fir_Blk = get_num(curr_tmp, 1)
+if 0 <= max_tmp and max_tmp < 10 :
+	fir_Blk = get_num(max_tmp, 1)
 	#좌표
 	top = 1
 	left = 19
@@ -149,7 +149,7 @@ if 0 <= curr_tmp and curr_tmp < 10 :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 else :
-	fir_Blk = get_num(curr_tmp // 10, 1)
+	fir_Blk = get_num(max_tmp // 10, 1)
 	#좌표
 	top = 1
 	left = 19
@@ -159,7 +159,7 @@ else :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 
-	sec_Blk = get_num(curr_tmp % 10, 1)
+	sec_Blk = get_num(max_tmp % 10, 1)
 	#좌표
 	top = 1
 	left = 25
@@ -172,7 +172,7 @@ else :
 
 # 최저기온 표시
 # 글자색 - 파랑색
-min_tmp = int(info[2][:-1])
+min_tmp = int(info[2][:-2])
 if min_tmp < 0 :
 	min_tmp = min_tmp[1:]
 	option_blk = get_minus(4)
@@ -186,8 +186,8 @@ if min_tmp < 0 :
 	oScreen.paste(tmpBlk, top, left)
 
 
-if 0 <= curr_tmp and curr_tmp < 10 :
-	fir_Blk = get_num(curr_tmp, 4)
+if 0 <= min_tmp and min_tmp < 10 :
+	fir_Blk = get_num(min_tmp, 4)
 	#좌표
 	top = 8
 	left = 19
@@ -197,7 +197,7 @@ if 0 <= curr_tmp and curr_tmp < 10 :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 else :
-	fir_Blk = get_num(curr_tmp // 10, 4)
+	fir_Blk = get_num(min_tmp // 10, 4)
 	#좌표
 	top = 8
 	left = 19
@@ -207,7 +207,7 @@ else :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 
-	sec_Blk = get_num(curr_tmp % 10, 4)
+	sec_Blk = get_num(min_tmp % 10, 4)
 	#좌표
 	top = 8
 	left = 25
@@ -217,4 +217,4 @@ else :
 	tmpBlk = tmpBlk + currBlk
 	oScreen.paste(tmpBlk, top, left)
 draw_matrix(oScreen); print()
-
+time.sleep(5)
