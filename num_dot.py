@@ -100,5 +100,5 @@ def get_num (a, x):
 		[0, 0, 0, 0, 0, 0]]
 	return blk
 def get_minus(x):
-	minus = [x, x, x]
+	minus = [[x, x, x]]
 	return minus
