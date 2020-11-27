@@ -2,7 +2,6 @@ from py_realdino import *
 from assistant_info import *
 from first_weather import *
 from second_weather import *
-import time
 import requests
 from bs4 import BeautifulSoup
 import time
@@ -38,6 +37,4 @@ while True:
         continue
 
     first_weather()
-    time.sleep(5)
     second_weather()
-    time.sleep(5)
