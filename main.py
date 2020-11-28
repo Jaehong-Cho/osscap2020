@@ -19,11 +19,8 @@ weather_init()
 
 
 assistant_info()
-time.sleep(3)
 first_weather()
-time.sleep(3)
 second_weather()
-time.sleep(3)
 
 while True:
     
@@ -36,11 +33,8 @@ while True:
         py_realdino()
         continue
     elif choice == 2:
-        time.sleep(3)
         first_weather()
-        time.sleep(3)
         second_weather()
-        time.sleep(3)
     elif choice == 3:
         break
     else:
