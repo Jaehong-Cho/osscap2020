@@ -329,6 +329,8 @@ def py_realdino():
     gameover = False
     jump = False
     boss_die = False
+    health = 2
+    up = False
 
     t = 0.5
     score = 1
@@ -467,7 +469,7 @@ def py_realdino():
             boss_hp = 2
             gameover = False
             jump = False
-            boss_die = False
+            up = False
 
             while (boss_hp > 0):
                 for event in pg.event.get():
@@ -479,10 +481,12 @@ def py_realdino():
                         if event.key == pg.K_SPACE:
                             jump = True
 
-                if boss_hp == 2:
-                    a = 7
-                elif boss_hp == 1:
+                if 0 < color < 5:
                     a = 1
+                else:
+                    a = 7
+                    up = False
+                    
                 iScreen = Matrix(d_boss_screen(a))
                 oScreen = Matrix(iScreen)
 
@@ -563,6 +567,7 @@ def py_realdino():
                     if j > 1:
                         it_x = 0
                         boss_hp -= 1
+                        up = True
                         score += 50
                 left = it_x
                 top = 4
@@ -571,7 +576,10 @@ def py_realdino():
                 it_tempBlk = iScreen.clip(top, left, top + currBlk.get_dy(), left + currBlk.get_dx())
                 it_tempBlk = it_tempBlk + currBlk
                 oScreen.paste(it_tempBlk, top, left)
-
+                
+                if up == True:
+                    color = color + 1
+                
                 draw_matrix(oScreen);
                 print()
 
@@ -583,7 +591,7 @@ def py_realdino():
 
                 time.sleep(t)
 
-        boss_hp = 2
+        boss_hp = health + 1
         draw_matrix(oScreen);
         print()
 
@@ -680,3 +688,4 @@ def py_realdino():
                 t = t * 0.99
 
         time.sleep(t)
+
