@@ -148,4 +148,7 @@ def second_weather():
     
     draw_matrix(oScreen);
     print()
-    time.sleep(8)
+    time.sleep(5)
+    draw_matrix(iScreen);
+    print()
+    time.sleep(2)

@@ -25,9 +25,8 @@ second_weather()
 while True:
     
     #weather_init()
-
     print("MODE")
-    print("1.dino game \n2.weather info \n3.Turn off")
+    print("1.dino game \n2.weather info \n3.weather info (100 times)\n4.Turn off")
     choice = int(input("Select the Mode : "))
     if choice == 1:
         py_realdino()
@@ -36,6 +35,10 @@ while True:
         first_weather()
         second_weather()
     elif choice == 3:
+        for i in range(100):
+            first_weather()
+            second_weather()
+    elif choice == 4:
         break
     else:
         print("잘못된 번호를 입력하셨습니다.")

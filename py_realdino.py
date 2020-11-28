@@ -468,7 +468,6 @@ def py_realdino():
             l = 1
             count = 0
             color = 0
-            boss_hp = 2
             gameover = False
             jump = False
             up = False
@@ -487,6 +486,7 @@ def py_realdino():
                     a = 1
                 else:
                     a = 7
+                    color = 0
                     up = False
 
                 iScreen = Matrix(d_boss_screen(a))
@@ -521,7 +521,7 @@ def py_realdino():
                     oScreen.paste(dino_tempBlk, top, left)
 
                 # 레이저
-                if l != 0 and lz2_x == 15:
+                if l != 0 and 14 <= lz2_x <= 15:
                     l = random.randint(0, 1)
                 if l == 0:
                     top = 2
@@ -592,8 +592,9 @@ def py_realdino():
                     sc = 0
 
                 time.sleep(t)
-
-        boss_hp = health + 1
+        if boss_hp == 0:
+            health += 1
+            boss_hp = health
         draw_matrix(oScreen);
         print()
 
