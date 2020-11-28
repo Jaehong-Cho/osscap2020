@@ -1,21 +1,35 @@
 from matrix import *
-import pygame as pg
+import LED_display as LMD
+import threading
 import sys
 import time
 import random
+def LED_init():
+    thread = threading.Thread(target = LMD.main, args=())
+    thread.setDaemon(True)
+    thread.start()
+    return
 
 def draw_matrix(m):
     array = m.get_array()
-    for y in range(m.get_dy()):
-        for x in range(m.get_dx()):
+    for y in range(16):
+        for x in range (42):
             if array[y][x] == 0:
-                print("□ ", end='')
-            elif 1 <= array[y][x] <= 7:
-                print("■ ", end='')
-            elif array[y][x] < 0:
-                print("ㅇ ", end='')
-            else:
-                print("XX", end='')
+                LMD.set_pixel(x-10, y, 0)
+            elif array[y][x] == 1:
+                LMD.set_pixel(x-10, y, 1)
+            elif array[y][x] == 2:
+                LMD.set_pixel(x-10, y, 2)
+            elif array[y][x] == 3:
+                LMD.set_pixel(x-10, y, 3)
+            elif array[y][x] == 4:
+                LMD.set_pixel(x-10, y, 4)
+            elif array[y][x] == 5:
+                LMD.set_pixel(x-10, y, 5)
+            elif array[y][x] == 6:
+                LMD.set_pixel(x-10, y, 6)
+            elif array[y][x] == 7:
+                LMD.set_pixel(x-10, y, 7)
         print()
 
 arrayScreen = [
@@ -231,7 +245,7 @@ def arrayBlk(a):
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
           [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]]
-
+    
     return arrayBlk[a]
 
 a = 0
@@ -241,6 +255,7 @@ for i in range(18):
      x[i] = 42
 left = 0
 
+LED_init()
 while a<=13:
      iScreen = Matrix(arrayScreen)
      oScreen = Matrix(iScreen)
