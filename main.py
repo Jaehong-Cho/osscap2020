@@ -15,12 +15,16 @@ def weather_init():
     w_thread.setDaemon(True)
     w_thread.start()
     return
-
-
 weather_init()
 
+
 assistant_info()
+first_weather()
+second_weather()
+
 while True:
+    
+    #weather_init()
 
     print("MODE")
     print("1.dino game \n2.weather info \n3.Turn off")
@@ -29,12 +33,10 @@ while True:
         py_realdino()
         continue
     elif choice == 2:
-        print()
+        first_weather()
+        second_weather()
     elif choice == 3:
         break
     else:
         print("잘못된 번호를 입력하셨습니다.")
         continue
-
-    first_weather()
-    second_weather()
