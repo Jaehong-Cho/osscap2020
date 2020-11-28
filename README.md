@@ -27,5 +27,7 @@ git clone 이후 python3 main.py 를 통해 프로젝트를 실행할 수 있습
 
 ----------------------
 > 공룡게임 오픈소스 https://github.com/byunkyunho/chrome-dino-game
+
 > 웹 스크래핑 오픈소스 https://github.com/norangLemon/naverWeather
+
 > 구글 API(assistant) https://developers.google.com/assistant/sdk/guides/service/python/
