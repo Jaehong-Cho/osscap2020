@@ -6,6 +6,8 @@
 
 * 처음 사용하기
 
+> 준비물 : USB 마이크, 3.5파이용 스피커
+
     ~~~~~~
 
     git clone https://github.com/Jaehong-Cho/osscap2020.git
