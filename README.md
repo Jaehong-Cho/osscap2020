@@ -6,7 +6,7 @@
 
 * 처음 사용하기
 
-> 준비물 : Raspberry Pi 4, USB 마이크, 3.5파이용 스피커, 16x32 LED matrix, LED matrix에 추가 전력을 공급할 5V/2A 아답터
+> 준비물 : Raspberry Pi 4, USB 마이크, 3.5파이용 스피커, 16x32 LED matrix, LED matrix에 추가 전력을 공급할 5V/2A power adopter
 
     git clone https://github.com/Jaehong-Cho/osscap2020.git
   
