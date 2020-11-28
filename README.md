@@ -6,9 +6,13 @@
 
 * 처음 사용하기
 
-  git clone https://github.com/Jaehong-Cho/osscap2020.git
+    ~~~~~~
+
+    git clone https://github.com/Jaehong-Cho/osscap2020.git
   
-  python3 main.py
+    python3 main.py
+    
+    ~~~~~~~
 
 git clone 이후 python3 main.py 를 통해 프로젝트를 실행할 수 있습니다.
 마이크에 "헤이 구글"을 말한 이후 날씨정보에 대한 내용을 물어보면 현재 위치 정보에 대한 날씨를 알려줍니다.
