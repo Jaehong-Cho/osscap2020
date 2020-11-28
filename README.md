@@ -22,3 +22,5 @@ git clone 이후 python3 main.py 를 통해 프로젝트를 실행할 수 있습
 출력되는 정보는 처음 출력되었던 날씨 정보와 동일합니다.
 
 메뉴 4번은 실행을 종료합니다.
+
+공룡게임 오픈소스 https://github.com/byunkyunho/chrome-dino-game
