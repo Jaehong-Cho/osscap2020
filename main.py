@@ -25,12 +25,13 @@ second_weather()
 while True:
     
     #weather_init()
-    print("MODE")
+    print("<MODE>")
+    print("-------------")
     print("1.dino game \n2.weather info \n3.weather info (100 times)\n4.Turn off")
-    choice = int(input("Select the Mode : "))
+    print("-------------")
+    choice = int(input("\nSelect the Mode : "))
     if choice == 1:
         py_realdino()
-        continue
     elif choice == 2:
         first_weather()
         second_weather()

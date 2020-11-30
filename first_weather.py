@@ -86,7 +86,7 @@ def first_weather():
         curr_tmp = -curr_tmp
         option_blk = get_minus(7)
         #좌표
-        top = 13
+        top = 12
         left = 1
 
         currBlk = Matrix(option_blk)
@@ -133,7 +133,7 @@ def first_weather():
         max_tmp = -max_tmp
         option_blk = get_minus(1)
         #좌표
-        top = 4
+        top = 3
         left = 16
 
         currBlk = Matrix(option_blk)
