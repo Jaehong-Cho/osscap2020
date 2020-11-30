@@ -71,7 +71,7 @@ def first_weather():
 
     #날씨 상태 아이콘 불러오기
     #10x10 array
-    icon = wd.weather_icon(info[1][:2])
+    icon = wd.weather_icon(info[1][:-14])
     #좌표
     top = 0
     left = 0
