@@ -32,6 +32,8 @@
 
 메뉴 4번은 실행을 종료합니다.
 
+![all](https://user-images.githubusercontent.com/70634938/100569833-9492ab00-3312-11eb-9484-67228aa0d84f.jpg)
+
 ----------------------
 > 공룡게임 오픈소스 https://github.com/byunkyunho/chrome-dino-game
 
