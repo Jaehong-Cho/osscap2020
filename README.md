@@ -14,14 +14,17 @@
     
 * GPIO  
     
-    $ sudo apt-get update
-    $ sudo apt-get install rpi.gpio
+    $ sudo apt-get update   
+    
+    $ sudo apt-get install rpi.gpio 
  
 * beautifulsoup4
 
-    $ sudo apt-get update
-    $ sudo apt-get install python3-pip  # python3의 pip library update
-    $ pip3 install beautifulsoup4
+    $ sudo apt-get update   
+    
+    $ sudo apt-get install python3-pip  # python3의 pip library update   
+    
+    $ pip3 install beautifulsoup4   
 
 * schedule
 
