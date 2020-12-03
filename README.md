@@ -110,6 +110,7 @@ ex) 오늘 날씨, 오늘 점심 뭐 먹을까?
 
     first_weather.py
     second_weather.py
+    날씨 정보는 main함수가 실행되고나서 부터 1시간마다 새롭게 업데이트 됩니다.
 
 >메뉴 3번은 날씨 정보를 100회 재출력합니다.     
 출력되는 정보는 처음 출력되었던 날씨 정보와 동일합니다.
@@ -119,6 +120,8 @@ ex) 오늘 날씨, 오늘 점심 뭐 먹을까?
     google_assistant_info.py
 
 >메뉴 5번은 프로그램을 종료해 줍니다.
+
+#### 더 자세한 기능 소개는 issue에 기재된 '결과 ppt 및 영상링크'를 참고해 주세요.
 
 ![all](https://user-images.githubusercontent.com/70634938/100569833-9492ab00-3312-11eb-9484-67228aa0d84f.jpg)
 
