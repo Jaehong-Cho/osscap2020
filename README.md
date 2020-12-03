@@ -129,6 +129,8 @@ ex) 오늘 날씨, 오늘 점심 뭐 먹을까?
 ![all](https://user-images.githubusercontent.com/70634938/100569833-9492ab00-3312-11eb-9484-67228aa0d84f.jpg)
 
 ----------------------
+## 프로젝트에서 사용된 오픈소스 링크
+   
 > 공룡게임 오픈소스 https://github.com/byunkyunho/chrome-dino-game
 
 > 웹 스크래핑 오픈소스 https://github.com/norangLemon/naverWeather
