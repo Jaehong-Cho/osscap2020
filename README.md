@@ -4,16 +4,45 @@
 (LED 스마트 스피커 / 공룡게임)
 -----------------
 
-* 처음 사용하기
+### 처음 사용하기
 
-> 미리 설치해야 되는 파이썬 라이브러리 : pygame, GPIO, beautifulsoup4, schedule
+미리 설치해야 되는 파이썬 라이브러리 : pygame, GPIO, beautifulsoup4, schedule   
+
+* pygame
+
+    $ python3 -m pip install -U pygame --user
+    
+* GPIO  
+    
+    $ sudo apt-get update
+    $ sudo apt-get install rpi.gpio
+ 
+* beautifulsoup4
+
+    $ sudo apt-get update
+    $ sudo apt-get install python3-pip  # python3의 pip library update
+    $ pip3 install beautifulsoup4
+
+* schedule
+
+    $ pip3 install schedule
 
 > 준비물 : Raspberry Pi 4, USB 마이크, 3.5파이용 스피커, 16x32 LED matrix, LED matrix에 추가 전력을 공급할 5V/2A power adopter
 
-    git clone https://github.com/Jaehong-Cho/osscap2020.git
+    $ git clone https://github.com/Jaehong-Cho/osscap2020.git
   
-    python3 main.py
+    $ python3 main.py
     
+#### 구글 어시스턴트 이용시 주의사항
+
+    구글 어시스턴트는 개별 등록이 필요한 서비스 입니다.
+    
+    아래의 Googole API 링크를 통해서 단계에 따라서 수행하신 후에 이용가능합니다.
+    
+    먼저 기기를 등록한 후에, 라즈베리파이 부팅시 자동 실행을 원하신다면
+    
+    해당 repo의 ai_speaker --> make_auto_start.txt를 참고해주시기 바랍니다.
+
 실행시 처음 보이는 문구는 Google_info.py로 google assistant의 이용안내 문구인 <"헤이 구글"이라고 말하세요.>를 스크롤링 하는 모습을 보실 수 있습니다.
 
 실제로 마이크에 "헤이 구글"을 말한 후, 궁금한 정보나 간단한 대화를 나눠보실 수 있습니다.
@@ -26,16 +55,6 @@ ex) 오늘 날씨, 오늘 점심 뭐 먹을까?
 
 참고로 메인함수에서 threading을 이용하여 날씨에 대한 정보는 1시간 간격으로 자동 업데이트합니다.
 
-구글 어시스턴트 이용시 주의사항
----------
-
-    구글 어시스턴트는 개별 등록이 필요한 서비스 입니다.
-    
-    아래의 Googole API 링크를 통해서 단계에 따라서 수행하신 후에 이용가능합니다.
-    
-    기기를 등록한 후에, 라즈베리파이 부팅시 자동 실행을 원하신다면
-    
-    해당 repo의 ai_speaker --> make_auto_start.txt를 참고해주시기 바랍니다.
 
 이후 메뉴에는 1, 2, 3, 4, 5번이 있습니다.
 
@@ -66,4 +85,4 @@ A)이후 메뉴창이 다시 나타나게 되면 alt키 + tab키를 누른 후�
 
 > 웹 스크래핑 오픈소스 https://github.com/norangLemon/naverWeather
 
-> 구글 API(assistant) https://developers.google.com/assistant/sdk/guides/service/python/
+> 구글 API(assistant) https://developers.google.com/assistant/sdk/guides/service/python/embed/setup
