@@ -30,4 +30,5 @@ cd /etc/xdg/lxsession/LXDE-pi
 nano autostart
 
 #at the end of command "add it"
-./google-assistant-demo --device-model-id "____"
+try : /home/pi/google_auto_start.sh
+if it doesn't work try : ./google-assistant-demo --device-model-id "____"
